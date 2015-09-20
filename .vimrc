@@ -252,18 +252,3 @@ let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 	\ 'file': '\v\.(exe|so|dll|pdb)$',
 	\ }
-
-let g:notes_directories  = ['~/.vim/Notes']
-let g:notes_suffix       = '.txt'
-let g:notes_title_sync   = 'change_title'
-let g:notes_smart_quotes = 1
-
-" Enable rainbow parentheses for all buffers
-augroup rainbow_parentheses
-  au!
-  au VimEnter * RainbowParenthesesActivate
-  au BufEnter * RainbowParenthesesLoadRound
-  au BufEnter * RainbowParenthesesLoadSquare
-  au BufEnter * RainbowParenthesesLoadBraces
-augroup END
-
