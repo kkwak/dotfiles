@@ -1,0 +1,15 @@
+
+git submodule add https://github.com/tpope/vim-surround.git bundle/surround.git
+git submodule add https://github.com/tpope/vim-repeat.git bundle/repeat.git
+git submodule add https://github.com/kien/ctrlp.vim.git bundle/ctrlp.git
+git submodule add https://github.com/bling/vim-airline.git bundle/vim-airline.git
+
+# git submodule add https://github.com/tpope/vim-fugitive.git bundle/vim-fugitive
+# git submodule add https://github.com/xolox/vim-notes.git bundle/notes.git
+# git submodule add https://github.com/xolox/vim-misc.git bundle/misc.git
+# git submodule add https://github.com/kien/rainbow_parentheses.vim.git bundle/rainbow_parentheses.git
+# git submodule add https://github.com/guns/vim-clojure-static.git bundle/vim-clojure-static.git
+# git submodule add https://github.com/tpope/vim-fireplace.git bundle/vim-fireplace.git
+# git submodule add https://github.com/vim-scripts/paredit.vim.git bundle/paredit.git
+
+
