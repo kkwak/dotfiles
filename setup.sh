@@ -51,7 +51,7 @@ mkdir -p $rootDest/.lein
 link .lein/profiles.clj            $rootDest/.lein
 
 mkdir -p $rootDest/.config/ranger
-link .config/up                      $rootDest/.config
+link .config/update-submodules.sh    $rootDest/.config
 link .config/ranger/commands.py      $rootDest/.config/ranger
 link .config/ranger/commands_full.py $rootDest/.config/ranger
 link .config/ranger/rc.conf          $rootDest/.config/ranger
