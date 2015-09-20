@@ -1,0 +1,69 @@
+[user]
+	email = kkwak@outlook.com
+	name = kkwak
+
+[core]
+  pager = cat
+
+[alias]
+	co = checkout
+	cp = cherry-pick
+	br = branch
+	ci = commit	
+	st = status
+  cg = config --global -e
+	spull = !git-svn fetch && git-svn rebase
+	spush = !git-svn dcommit
+	lg = log -25 --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cr%Creset | %C(yellow)%d%Creset %s %C(bold yellow)[%an]%Creset' --abbrev-commit --date=short
+	tidy = !git fsck -- unreachable && git reflog expire --expire=0 --all && git repack --max-pack-size=100M -a -d -l && git prune && git gc --aggresive
+	mt = mergetool
+
+[merge]
+	tool = meld
+[diff]
+	tool = meld
+
+[mergetool]
+	prompt = false
+	keepBackup = false
+
+[color]
+	ui = auto
+	interactive = auto
+	merge = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[push]
+	default = simple
+[pull]
+	default = simple
+	rebase = true
+[branch]
+  autosetupmerge = true
+	autosetuprebase = always
+[pack]
+	windowMemory = 256m
+	packSizeLimit = 100m
+#
+#	[commit]
+#
+#	# set the filepath to the template
+#
+#	# This filename can be whatever you want, I called it this
+#
+#		template = ~/.git.commit.template
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
