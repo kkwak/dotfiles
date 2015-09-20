@@ -3,12 +3,12 @@
 rootDest=$1
 if [[ -z "$rootDest" ]]
 then
-  echo "Destination was not specified: defaulting to ~/"
+  echo "Destination was not specified: defaulting to $HOME"
   read -p "Are you sure? [y/n]: " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    rootDest="~"
+    rootDest="$HOME"
   else
     echo "Please specify the destination..."
     exit 1
@@ -17,11 +17,13 @@ fi
 
 SCRIPTPATH=$( cd $(dirname $0) ; pwd -P )
 
+COUNTER=0
 link() {
   origin=$1
   dest=$2
 
   ln -s $SCRIPTPATH/$origin $dest
+  COUNTER=$((COUNTER+1))
 }
 
 # root files:
@@ -48,8 +50,12 @@ link .sbt/0.13/plugins/plugins.sbt $rootDest/.sbt/0.13/plugins
 mkdir -p $rootDest/.lein
 link .lein/profiles.clj            $rootDest/.lein
 
-mkdir -p $rootDest/.config
-link .config/up                    $rootDest/.config
-link .config/ranger                $rootDest/.config
+mkdir -p $rootDest/.config/ranger
+link .config/up                      $rootDest/.config
+link .config/ranger/commands.py      $rootDest/.config/ranger
+link .config/ranger/commands_full.py $rootDest/.config/ranger
+link .config/ranger/rc.conf          $rootDest/.config/ranger
+link .config/ranger/rifle.conf       $rootDest/.config/ranger
+link .config/ranger/scope.sh         $rootDest/.config/ranger
 
-
+echo "Linked $COUNTER files/folders"
