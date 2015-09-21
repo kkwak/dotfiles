@@ -16,46 +16,49 @@ then
 fi
 
 SCRIPTPATH=$( cd $(dirname $0) ; pwd -P )
-
 COUNTER=0
+
 link() {
   origin=$1
-  dest=$2
+  fullPathDest="$rootDest/$origin"
 
-  ln -s $SCRIPTPATH/$origin $dest
-  COUNTER=$((COUNTER+1))
+  if ! [ -L $fullPathDest ]; then 
+    ln -s $SCRIPTPATH/$origin $fullPathDest
+    COUNTER=$((COUNTER+1))
+  else
+    echo "Link exists at: $fullPathDest"
+  fi
 }
 
 # root files:
-link .gitconfig  $rootDest
-link .mongorc.js $rootDest
-link .spacemacs  $rootDest
-link .tmux.conf  $rootDest
-link .vimrc      $rootDest
-link .zlogin     $rootDest
-link .zlogout    $rootDest
-link .zpreztorc  $rootDest
-link .zprofile   $rootDest
-link .zshenv     $rootDest
-link .zshrc      $rootDest
+link .gitconfig
+link .spacemacs
+link .tmux.conf
+link .vimrc
+link .zlogin
+link .zlogout
+link .zpreztorc
+link .zprofile 
+link .zshenv
+link .zshrc
 
 # folders
-link .vim        $rootDest
-link .zprezto    $rootDest
+link .vim
+link .zprezto
 
 # subfolder required
 mkdir -p $rootDest/.sbt/0.13/plugins
-link .sbt/0.13/plugins/plugins.sbt $rootDest/.sbt/0.13/plugins
+link .sbt/0.13/plugins/plugins.sbt
 
 mkdir -p $rootDest/.lein
-link .lein/profiles.clj            $rootDest/.lein
+link .lein/profiles.clj
 
 mkdir -p $rootDest/.config/ranger
-link .config/update-submodules.sh    $rootDest/.config
-link .config/ranger/commands.py      $rootDest/.config/ranger
-link .config/ranger/commands_full.py $rootDest/.config/ranger
-link .config/ranger/rc.conf          $rootDest/.config/ranger
-link .config/ranger/rifle.conf       $rootDest/.config/ranger
-link .config/ranger/scope.sh         $rootDest/.config/ranger
+link .config/update-submodules.sh
+link .config/ranger/commands.py
+link .config/ranger/commands_full.py
+link .config/ranger/rc.conf
+link .config/ranger/rifle.conf
+link .config/ranger/scope.sh
 
 echo "Linked $COUNTER files/folders"
