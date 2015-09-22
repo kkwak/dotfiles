@@ -9,8 +9,11 @@
 
 ### Vim
   <https://github.com/tpope/vim-surround>
+  
   <https://github.com/tpope/vim-repeat>
+  
   <https://github.com/kien/ctrlp.vim>
+  
   <https://github.com/bling/vim-airline>
 
 ### Ranger
@@ -19,8 +22,12 @@
 ## Setup
 Run setup (destination defaults to $HOME)
 
-``sh
+``bash
 ./setup.sh dest/dir
+``
+### Updating
+``bash
+./.config/update-submodules.sh
 ``
 
 ### TODO
