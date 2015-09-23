@@ -82,12 +82,12 @@ set ffs=unix,dos,mac     "Default file types
 "	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 "	set t_ut=
 "	set t_Co=256
-"	colorscheme Tomorrow-Night-Bright
+"	colorscheme Tomorrow-Night
 "endif
 
 if has("gui_running")
 	set guioptions-=T
-	set guifont   =Hack:h13
+	set guifont   =Hack:h12
 	set columns   =150
 	set lines     =50               " 50 lines of text instead of 24,
 	colorscheme Tomorrow-Night-Eighties
@@ -115,9 +115,17 @@ vnoremap <tab> %
 nnoremap ; :
 nnoremap <leader><space> :noh<cr> " Remove any highlights
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>	" cd to update the pwd to dir of opened file
-" System clipboard interaction
-map <Leader>p "+gP
-map <Leader>y "+y
+
+" System clipboard interaction (applies for windows)
+"set clipboard=unnamed
+"map <Leader>p "+gP
+"map <Leader>y "+y
+
+" OSX System clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -239,11 +247,13 @@ map <silent> <C-E> :call ToggleVExplorer()<CR>
 """"""""""""""""""""""""""""""
 " => Plugin configuration
 """"""""""""""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_powerline_fonts = 0
 let g:airline_theme='dark'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_left_sep=' '
+let g:airline_left_alt_sep='|'
+let g:airline_right_sep=' '
+let g:airline_right_alt_sep='|'
 let g:airline_section_z=''
 
 let g:ctrlp_cmd = 'CtrlPBuffer'

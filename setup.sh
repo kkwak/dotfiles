@@ -46,6 +46,9 @@ link .zshrc
 link .vim
 link .zprezto
 
+mkdir -p $rootDest/.config
+link .config/tmux-resurrect
+
 # subfolder required
 mkdir -p $rootDest/.sbt/0.13/plugins
 link .sbt/0.13/plugins/plugins.sbt
@@ -62,3 +65,4 @@ link .config/ranger/rifle.conf
 link .config/ranger/scope.sh
 
 echo "Linked $COUNTER files/folders"
+
