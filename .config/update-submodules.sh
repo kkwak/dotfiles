@@ -5,7 +5,7 @@ SCRIPTPATH=$(dirname $FULLPATH_FILE)
 
 echo Updating dotfiles repo
 pushd $SCRIPTPATH
-git pull --recurse-submodules && git submodule update
+git pull --recurse-submodules && git submodule update --init
 popd
 
 if [ -d "$HOME/.emacs.d" ]; then

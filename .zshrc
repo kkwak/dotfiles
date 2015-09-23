@@ -13,6 +13,7 @@ fi
 # Customize to your needs...
 alias ll='ls -lah'
 alias 3rdup='zsh ~/.config/update-submodules.sh'
+alias up='zsh ~/.config/up.sh'
 alias e='emacsclient -t'
 alias s='git st'
 alias l='git lg'
