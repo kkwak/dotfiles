@@ -46,10 +46,12 @@ link .zshrc
 link .vim
 link .zprezto
 
+# subfolder required
 mkdir -p $rootDest/.config
 link .config/tmux-resurrect
+link .config/up.sh
+link .config/update-submodules.sh
 
-# subfolder required
 mkdir -p $rootDest/.sbt/0.13/plugins
 link .sbt/0.13/plugins/plugins.sbt
 
@@ -57,7 +59,6 @@ mkdir -p $rootDest/.lein
 link .lein/profiles.clj
 
 mkdir -p $rootDest/.config/ranger
-link .config/update-submodules.sh
 link .config/ranger/commands.py
 link .config/ranger/commands_full.py
 link .config/ranger/rc.conf
