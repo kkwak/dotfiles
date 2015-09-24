@@ -14,6 +14,7 @@ fi
 alias ll='ls -lah'
 alias 3rdup='zsh ~/.config/update-submodules.sh'
 alias up='zsh ~/.config/up.sh'
+alias brewup='brew upgrade && brew update && brew cleanup && brew cask cleanup'
 alias e='emacsclient -t'
 alias s='git st'
 alias l='git lg'
