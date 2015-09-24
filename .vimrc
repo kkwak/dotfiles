@@ -97,8 +97,9 @@ set mousehide                   " Hide the mouse when typing text
 set laststatus=2
 hi Cursor guibg=green
 
-"set listchars=trail:·,tab:\ ,precedes:«,extends:»,eol:¬
-"set list
+set listchars=trail:·,tab:▸\ ,precedes:«,extends:»,eol:¬
+"set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+set list
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
