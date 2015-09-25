@@ -22,11 +22,19 @@ link() {
   origin=$1
   fullPathDest="$rootDest/$origin"
 
-  if ! [ -L $fullPathDest ]; then 
+  if [ -e $fullPathDest ]; then 
+  # if file exists
+    if [ -L $fullPathDest ]; then 
+    # if file is exists && symlink
+      echo "Overwriting existing symlink at: $fullPathDest"
+      ln -sfn $SCRIPTPATH/$origin $fullPathDest
+      COUNTER=$((COUNTER+1))
+    else
+      echo "(Compare and delete) File exists at: $fullPathDest"
+    fi
+  else
     ln -s $SCRIPTPATH/$origin $fullPathDest
     COUNTER=$((COUNTER+1))
-  else
-    echo "Link exists at: $fullPathDest"
   fi
 }
 
