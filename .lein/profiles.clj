@@ -1,3 +1,4 @@
 {:user {:plugins [
-                  [cider/cider-nrepl "0.10.0-SNAPSHOT"]
+                  [cider/cider-nrepl "0.9.1"]
+                  [lein-ancient "0.6.7"]
                  ]}}

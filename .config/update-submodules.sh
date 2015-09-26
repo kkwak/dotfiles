@@ -8,8 +8,7 @@ pushd $SCRIPTPATH
 # do not require /master branch
 ./up.sh
 
-git submodule sync
-git submodule update --init --recursive
+git fetch --all --recurse-submodules && git submodule update
 popd
 echo 
 if [ -d "$HOME/.emacs.d" ]; then
