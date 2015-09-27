@@ -22,3 +22,12 @@ alias b='git br'
 alias gg='git gui'
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+# Required for EMACS multi-term as .zprofile is not loaded
+if [[ -z "$LANG" ]]; then
+  export LANG=en_US.UTF-8
+fi
+
+export LC_ALL=$LANG
+export TERM=xterm-256color
+

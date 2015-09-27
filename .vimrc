@@ -73,24 +73,21 @@ set fileencoding=utf-8
 set background=dark
 set ffs=unix,dos,mac     "Default file types
 
-	colorscheme Tomorrow-Night-Eighties
-	set t_Co=256
+colorscheme Tomorrow-Night-Eighties
 
-"if &term =~ '256color'
-"	" disable Background Color Erase (BCE) so that color schemes
-"	" render properly when inside 256-color tmux and GNU screen.
-"	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-"	set t_ut=
-"	set t_Co=256
-"	colorscheme Tomorrow-Night
-"endif
+if &term =~ '256color'
+	" disable Background Color Erase (BCE) so that color schemes
+	" render properly when inside 256-color tmux and GNU screen.
+	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+	set t_ut=
+	set t_Co=256
+endif
 
 if has("gui_running")
 	set guioptions-=T
 	set guifont   =Hack:h12
 	set columns   =150
 	set lines     =50               " 50 lines of text instead of 24,
-	colorscheme Tomorrow-Night-Eighties
 endif
 
 set mousehide                   " Hide the mouse when typing text
