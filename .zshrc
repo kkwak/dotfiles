@@ -11,6 +11,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+export EDITOR="vim"
+bindkey -v 
+
+# vi style incremental search
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward  
+
 alias ll='ls -lah'
 alias 3rdup='zsh ~/.config/update-submodules.sh'
 alias up='zsh ~/.config/up.sh'
@@ -21,6 +30,7 @@ alias l='git lg'
 alias b='git br'
 alias gg='git gui'
 
+# requires autojump: brew install autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # Required for EMACS multi-term as .zprofile is not loaded

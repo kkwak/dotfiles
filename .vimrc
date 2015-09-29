@@ -1,129 +1,129 @@
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible                " must be first line
+  " => General
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  set nocompatible                " must be first line
 
-set encoding=utf-8							" marks the default encoding
-scriptencoding utf-8						" must be *after* the set encoding
+  set encoding=utf-8							" marks the default encoding
+  scriptencoding utf-8						" must be *after* the set encoding
 
-source $VIMRUNTIME/filetype.vim " Add filetype specific manipulations - highlighting/syntax/spacing/etc
+  source $VIMRUNTIME/filetype.vim " Add filetype specific manipulations - highlighting/syntax/spacing/etc
 
-set history=400                 " Sets how many lines of history VIM has to remember
-let mapleader   = "\<Space>"    " Replace the default <leader> key from '\' to space 
-let g:mapleader = "\<Space>"    " Replace the default <leader> key from '\' to space 
+  set history=400                 " Sets how many lines of history VIM has to remember
+  let mapleader   = "\<Space>"    " Replace the default <leader> key from '\' to space 
+  let g:mapleader = "\<Space>"    " Replace the default <leader> key from '\' to space 
 
-" Enable filetype plugin
-filetype plugin on
-filetype indent on
+  " Enable filetype plugin
+  filetype plugin on
+  filetype indent on
 
-call pathogen#infect()
+  call pathogen#infect()
 
-" Fast editing of the .vimrc (with auto reload)
-autocmd! bufwritepost vimrc source ~/.vimrc
+  " Fast editing of the .vimrc (with auto reload)
+  autocmd! bufwritepost vimrc source ~/.vimrc
 
-set shortmess+=I	" Remove the initial splash text
-set autoread			" Set to auto read when a file is changed from the outside
-set autowrite			" automatically write a file when leaving a modified buffer
+  set shortmess+=I	" Remove the initial splash text
+  set autoread			" Set to auto read when a file is changed from the outside
+  set autowrite			" automatically write a file when leaving a modified buffer
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" a ruler on steroids
-set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-"set so=7                        " Set 7 lines to the cursors - when moving vertical..
-set showmode                    " display the current mode
-set wildmenu                    " Turn on WiLd menu
-set wildchar=<Tab>							"
-set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-set cursorline                  " highlight current line
-set ruler                       " Always show current position
-set showcmd                     " show partial commands in status line selected characters/lines in visual mode
-set cmdheight=2                 " The commandbar height
-set hidden                      " Change buffer - without saving
-set backspace=eol,start,indent  " Set backspace config
-set whichwrap+=<,>,h,l
-set ignorecase                  " Ignore case when searching
-set smartcase
-set hlsearch                    " Highlight search things
-set incsearch                   " Make search act like search in modern browsers
-set nolazyredraw                " Don't redraw while executing macros
-set magic                       " Set magic on, for regular expressions
-set showmatch                   " Show matching braces when text indicator is over them
-set mat=2                       " How many tenths of a second to blink
-set title
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " => VIM user interface
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " a ruler on steroids
+  set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+  "set so=7                        " Set 7 lines to the cursors - when moving vertical..
+  set showmode                    " display the current mode
+  set wildmenu                    " Turn on WiLd menu
+  set wildchar=<Tab>							"
+  set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+  set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+  set cursorline                  " highlight current line
+  set ruler                       " Always show current position
+  set showcmd                     " show partial commands in status line selected characters/lines in visual mode
+  set cmdheight=2                 " The commandbar height
+  set hidden                      " Change buffer - without saving
+  set backspace=eol,start,indent  " Set backspace config
+  set whichwrap+=<,>,h,l
+  set ignorecase                  " Ignore case when searching
+  set smartcase
+  set hlsearch                    " Highlight search things
+  set incsearch                   " Make search act like search in modern browsers
+  set nolazyredraw                " Don't redraw while executing macros
+  set magic                       " Set magic on, for regular expressions
+  set showmatch                   " Show matching braces when text indicator is over them
+  set mat=2                       " How many tenths of a second to blink
+  set title
 
-set cpoptions+=$
+  set cpoptions+=$
 
-" No sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+  " No sound on errors
+  set noerrorbells
+  set novisualbell
+  set t_vb=
+  set tm=500
 
-" Use standard regex
-nnoremap / /\v
-vnoremap / /\v
+  " Use standard regex
+  nnoremap / /\v
+  vnoremap / /\v
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax on          "Enable syntax hl
-set number         " show line numbers
-set fileencoding=utf-8
-set background=dark
-set ffs=unix,dos,mac     "Default file types
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " => Colors and Fonts
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  syntax on          "Enable syntax hl
+  set number         " show line numbers
+  set fileencoding=utf-8
+  set background=dark
+  set ffs=unix,dos,mac     "Default file types
 
-colorscheme Tomorrow-Night-Eighties
+  colorscheme Tomorrow-Night-Eighties
 
-if &term =~ '256color'
-	" disable Background Color Erase (BCE) so that color schemes
-	" render properly when inside 256-color tmux and GNU screen.
-	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-	set t_ut=
-	set t_Co=256
-endif
+  if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+    set t_Co=256
+  endif
 
-if has("gui_running")
-	set guioptions-=T
-	set guifont   =Hack:h12
-	set columns   =150
-	set lines     =50               " 50 lines of text instead of 24,
-endif
+  if has("gui_running")
+    set guioptions-=T
+    set guifont   =Hack:h12
+    set columns   =150
+    set lines     =50               " 50 lines of text instead of 24,
+  endif
 
-set mousehide                   " Hide the mouse when typing text
-set laststatus=2
-hi Cursor guibg=green
+  set mousehide                   " Hide the mouse when typing text
+  set laststatus=2
+  hi Cursor guibg=green
 
-set listchars=trail:·,tab:▸\ ,precedes:«,extends:»,eol:¬
-"set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
-set list
+  set listchars=trail:·,tab:▸\ ,precedes:«,extends:»,eol:¬
+  "set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+  set list
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " => Moving around, tabs and buffers
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Ignore HELP when trying to push the ESC button!
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
+  " Ignore HELP when trying to push the ESC button!
+  inoremap <F1> <ESC>
+  nnoremap <F1> <ESC>
+  vnoremap <F1> <ESC>
 
-nnoremap <tab> %			" Much easier to press tab to match
-vnoremap <tab> %
+  nnoremap <tab> %			" Much easier to press tab to match
+  vnoremap <tab> %
 
-nnoremap ; :
-nnoremap <leader><space> :noh<cr> " Remove any highlights
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>	" cd to update the pwd to dir of opened file
+  nnoremap ; :
+  nnoremap <leader><space> :noh<cr> " Remove any highlights
+  nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>	" cd to update the pwd to dir of opened file
 
-" System clipboard interaction (applies for windows)
-"set clipboard=unnamed
-"map <Leader>p "+gP
-"map <Leader>y "+y
+  " System clipboard interaction (applies for windows)
+  "set clipboard=unnamed
+  "map <Leader>p "+gP
+  "map <Leader>y "+y
 
-" OSX System clipboard
-noremap <leader>y "*y
-noremap <leader>yy "*Y
-" Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+  " OSX System clipboard
+  noremap <leader>y "*y
+  noremap <leader>yy "*Y
+  " Preserve indentation while pasting text from the OS X clipboard
+  noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
