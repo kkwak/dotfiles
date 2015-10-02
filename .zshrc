@@ -12,13 +12,13 @@ fi
 
 # Customize to your needs...
 export EDITOR="vim"
-bindkey -v 
+bindkey -v
 
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward  
+bindkey '^N' history-search-forward
 
 alias ll='ls -lah'
 alias 3rdup='zsh ~/.config/update-submodules.sh'
@@ -29,6 +29,7 @@ alias s='git st'
 alias l='git lg'
 alias b='git br'
 alias gg='git gui'
+alias gk='gitk --all'
 
 # requires autojump: brew install autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
@@ -41,3 +42,5 @@ fi
 export LC_ALL=$LANG
 export TERM=xterm-256color
 
+FOR_COMPILE="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=1G -Xss2M"
+export SBT_OPTS=$FOR_COMPILE
