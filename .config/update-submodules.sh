@@ -5,16 +5,18 @@ SCRIPTPATH=$(dirname $FULLPATH_FILE)
 
 echo "=== Updating dotfiles repo ==="
 pushd $SCRIPTPATH
+
+git fetch --all --recurse-submodules && git submodule update
 # do not require /master branch
 ./up.sh
 
-git fetch --all --recurse-submodules && git submodule update
 popd
 echo 
 if [ -d "$HOME/.emacs.d" ]; then
   echo "--- Updating Spacemacs Repo independently ---"
   pushd ~/.emacs.d
-  git pull --recurse-submodules && git submodule update
+  git fetch --all --recurse-submodules && git submodule update
+  $SCRIPTPATH/up.sh
   popd
 fi
 

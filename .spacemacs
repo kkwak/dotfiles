@@ -3,7 +3,9 @@
 ;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
-  "Configuration Layers declaration."
+  "Configuration Layers declaration.
+You should not put any user code in this function besides modifying the variable
+values."
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -27,9 +29,7 @@
      git
      markdown
      org
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+     shell
      syntax-checking
      version-control
      clojure
@@ -80,6 +80,8 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(monokai
                          zenburn
+                         spacemacs-dark
+                         spacemacs-light
                          solarized-light
                          solarized-dark
                          leuven)
@@ -184,18 +186,16 @@ values."
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil
-   )
-  ;; User initialization goes here
+   ))
+
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code. It is called immediately after `dotspacemacs/init'.  You are free to put any user code."
+
   (setq-default
    truncate-lines t
    ;; When returning to Evil-Normal-Mode stay on same character
    evil-move-cursor-back nil
-  ))
-
-(defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put any
-user code."
+  )
 
   ;; Required for GUI Emacs - so that zsh prezto doesn't load tmux
   (setenv "EMACS" "true")
@@ -205,9 +205,8 @@ user code."
   ;;(set-face-attribute 'linum nil :height 80) ;; Make the line number font a little smaller
   )
 
-(defun dotspacemacs/config ()
-  "Configuration function.
- This function is called at the very end of Spacemacs initialization after layers configuration."
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.  This function is called at the very end of Spacemacs initialization after layers configuration. You are free to put any user code."
 
   ;; other options are: 'arrow, ...
   (setq powerline-default-separator nil)
