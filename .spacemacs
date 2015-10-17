@@ -30,6 +30,7 @@ values."
      markdown
      org
      shell
+     tmux
      syntax-checking
      version-control
      clojure

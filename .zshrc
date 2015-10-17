@@ -23,7 +23,7 @@ bindkey '^N' history-search-forward
 alias ll='ls -lah'
 alias 3rdup='zsh ~/.config/update-submodules.sh'
 alias up='zsh ~/.config/up.sh'
-alias brewup='brew upgrade && brew update && brew cleanup && brew cask cleanup'
+alias brewup='brew update && brew upgrade && brew cleanup && brew cask cleanup'
 alias e='emacsclient -t'
 alias s='git st'
 alias l='git lg'
@@ -44,3 +44,5 @@ export TERM=xterm-256color
 
 FOR_COMPILE="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=1G -Xss2M"
 export SBT_OPTS=$FOR_COMPILE
+
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
