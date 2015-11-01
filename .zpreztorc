@@ -32,11 +32,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'homebrew' \
-  'osx' \
   'git' \
-  'node' \
-  'python' \
   'syntax-highlighting' \
   'history-substring-search' \
   'tmux' \
