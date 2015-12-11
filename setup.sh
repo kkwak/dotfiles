@@ -22,17 +22,26 @@ link() {
   origin=$1
   fullPathDest="$rootDest/$origin"
 
-  if [ -e $fullPathDest ]; then 
-  # if file exists
-    if [ -L $fullPathDest ]; then 
-    # if file is exists && symlink
+  if [ -e $fullPathDest ]; then
+    if [ -L $fullPathDest ]; then
+      # if a symlink file exists - then replace link
       echo "Overwriting existing symlink at: $fullPathDest"
       ln -sfn $SCRIPTPATH/$origin $fullPathDest
       COUNTER=$((COUNTER+1))
     else
+      # if a non-symlink file exists - leave alone
       echo "(Compare and delete) File exists at: $fullPathDest"
     fi
+
+  elif [ -L $fullPathDest ]; then
+    # if an invalid symlink file exists - then replace link
+    echo "Overwriting existing symlink at: $fullPathDest"
+    ln -sfn $SCRIPTPATH/$origin $fullPathDest
+    COUNTER=$((COUNTER+1))
+
   else
+    # if no file exists - link
+    echo "Linking ${SCRIPTPATH}/${origin} ${fullPathDest}"
     ln -s $SCRIPTPATH/$origin $fullPathDest
     COUNTER=$((COUNTER+1))
   fi
@@ -74,4 +83,3 @@ link .config/ranger/rifle.conf
 link .config/ranger/scope.sh
 
 echo "Linked $COUNTER files/folders"
-
