@@ -114,16 +114,8 @@
   nnoremap <leader><space> :noh<cr> " Remove any highlights
   nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>	" cd to update the pwd to dir of opened file
 
-  " System clipboard interaction (applies for windows)
-  "set clipboard=unnamed
-  "map <Leader>p "+gP
-  "map <Leader>y "+y
-
-  " OSX System clipboard
-  noremap <leader>y "*y
-  noremap <leader>yy "*Y
-  " Preserve indentation while pasting text from the OS X clipboard
-  noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+  " System clipboard interaction
+  set clipboard=unnamed
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
