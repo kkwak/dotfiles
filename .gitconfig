@@ -16,7 +16,7 @@
 	spull = !git-svn fetch && git-svn rebase
 	spush = !git-svn dcommit
 	lg = log -25 --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cr%Creset | %C(yellow)%d%Creset %s %C(bold yellow)[%an]%Creset' --abbrev-commit --date=short
-	tidy = !git fsck -- unreachable && git reflog expire --expire=0 --all && git repack --max-pack-size=100M -a -d -l && git prune && git gc --aggresive
+	tidy = !git fsck --unreachable && git reflog expire --expire=0 --all && git repack --max-pack-size=100M -a -d -l && git prune && git gc --aggressive
 	mt = mergetool
 
 [credential]
