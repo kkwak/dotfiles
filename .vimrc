@@ -208,6 +208,12 @@ au FileType xml setlocal foldmethod=syntax
 au FileType xml set nowrap
 set foldlevelstart=9
 
+""""""""""""""""""""""""""""""
+" => Json
+""""""""""""""""""""""""""""""
+command -range JsonFmt <line1>,<line2>!python3 -m json.tool
+vnoremap & :JsonFmt<CR>
+
 " To enable the saving and restoring of screen positions.
 let g:screen_size_restore_pos = 1
 
