@@ -50,7 +50,9 @@ values."
      spell-checking
      syntax-checking
      version-control
-;;     clojure
+     go
+     python
+     clojure
 ;;     html
      osx
      )
@@ -314,7 +316,7 @@ values."
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (org-category-capture flyspell-correct-helm flyspell-correct auto-dictionary packed winum uuidgen unfill log4e gntp parent-mode gitignore-mode fringe-helper git-gutter+ fuzzy pos-tip pkg-info epl flx evil-visual-mark-mode goto-chg eval-sexp-fu f s diminish popup powerline spinner org org-projectile alert org-download markdown-mode link-hint hydra request git-link git-gutter eyebrowse evil-ediff eshell-z company bind-key auto-complete avy iedit bind-map highlight evil dumb-jump column-enforce-mode inflections anzu smartparens undo-tree magit-popup git-commit with-editor async dash pug-mode hide-comnt mwim evil-unimpaired clojure-snippets cider clojure-mode flycheck yasnippet helm helm-core projectile magit osx-dictionary xterm-color ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el pbcopy paradox page-break-lines osx-trash orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode launchctl jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe git-gutter-fringe+ gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help emmet-mode elisp-slime-nav diff-hl define-word company-web company-statistics company-quickhelp clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (edn multiple-cursors paredit peg seq queue org-mime go-guru go-eldoc company-go go-mode ghub let-alist yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic org-category-capture flyspell-correct-helm flyspell-correct auto-dictionary packed winum uuidgen unfill log4e gntp parent-mode gitignore-mode fringe-helper git-gutter+ fuzzy pos-tip pkg-info epl flx evil-visual-mark-mode goto-chg eval-sexp-fu f s diminish popup powerline spinner org org-projectile alert org-download markdown-mode link-hint hydra request git-link git-gutter eyebrowse evil-ediff eshell-z company bind-key auto-complete avy iedit bind-map highlight evil dumb-jump column-enforce-mode inflections anzu smartparens undo-tree magit-popup git-commit with-editor async dash pug-mode hide-comnt mwim evil-unimpaired clojure-snippets cider clojure-mode flycheck yasnippet helm helm-core projectile magit osx-dictionary xterm-color ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el pbcopy paradox page-break-lines osx-trash orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode launchctl jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe git-gutter-fringe+ gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help emmet-mode elisp-slime-nav diff-hl define-word company-web company-statistics company-quickhelp clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore))
  '(vc-annotate-background nil)
@@ -346,17 +348,16 @@ values."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(region ((t (:background "darkgoldendrow" :foreground "gray0" ))))
- '(org-level-1 ((t (:inherit outline-1 :height 1.0 ))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.0 ))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.0 ))))
- '(org-level-4 ((t (:inherit outline-3 :height 1.0 ))))
- '(org-level-5 ((t (:inherit outline-3 :height 1.0 ))))
- '(org-level-6 ((t (:inherit outline-3 :height 1.0 ))))
- '(org-level-7 ((t (:inherit outline-3 :height 1.0 ))))
- '(org-level-8 ((t (:inherit outline-3 :height 1.0 ))))
- 
  '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(evil-search-highlight-persist-highlight-face ((t (:background "DarkGoldenrod")))))
+ '(evil-search-highlight-persist-highlight-face ((t (:background "DarkGoldenrod"))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+ '(org-level-4 ((t (:inherit outline-3 :height 1.0))))
+ '(org-level-5 ((t (:inherit outline-3 :height 1.0))))
+ '(org-level-6 ((t (:inherit outline-3 :height 1.0))))
+ '(org-level-7 ((t (:inherit outline-3 :height 1.0))))
+ '(org-level-8 ((t (:inherit outline-3 :height 1.0))))
+ '(region ((t (:background "darkgoldendrow" :foreground "gray0")))))
