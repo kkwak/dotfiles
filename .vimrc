@@ -73,7 +73,7 @@
   set background=dark
   set ffs=unix,dos,mac     "Default file types
 
-  colorscheme Tomorrow-Night-Eighties
+  colorscheme Tomorrow-Night-Bright
 
   if &term =~ '256color'
     " disable Background Color Erase (BCE) so that color schemes
@@ -199,6 +199,20 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+""""""""""""""""""""""""""""""
+" => python
+""""""""""""""""""""""""""""""
+"au BufNewFile,BufRead *.py
+"    \ set tabstop=4
+"    \ set softtabstop=4
+"    \ set shiftwidth=4
+"    \ set textwidth=79
+"    \ set expandtab
+"    \ set autoindent
+"    \ set fileformat=unix
+
+nnoremap <leader>r :!%:p<CR>
 
 """"""""""""""""""""""""""""""
 " => Xml

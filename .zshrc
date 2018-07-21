@@ -27,11 +27,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export EDITOR="vim"
 bindkey -v
 
-# vi style incremental search
-bindkey '^R' history-incremental-search-backward
-bindkey '^S' history-incremental-search-forward
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
+# https://github.com/junegunn/fzf : command-line fuzzy finder
+[ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
 alias ll='ls -lah'
 
