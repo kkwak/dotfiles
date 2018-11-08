@@ -16,12 +16,28 @@ if [[ -z "$LANG" ]]; then
 fi
 
 export LC_ALL=$LANG
-export TERM=xterm-256color
+export TERM=screen-256color
 
-# requires autojump: brew install autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+case `uname` in
+  Darwin)
+    # commands for OS X go here
+    # requires autojump: brew install autojump
+    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+    alias brewup='brew update && brew upgrade && brew cleanup'
+    alias e='emacsclient -nw -c -a "" "$@"'
+
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+  ;;
+  Linux)
+    # commands for Linux go here
+  ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+  ;;
+esac
+
 
 # Customize to your needs...
 export EDITOR="vim"
@@ -31,9 +47,6 @@ bindkey -v
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
 alias ll='ls -lah'
-
-alias brewup='brew update && brew upgrade && brew cleanup && brew cask cleanup'
-alias e='emacsclient -nw -c -a "" "$@"'
 
 # GIT
 alias 3rdup='zsh ~/.config/update-submodules.sh'
@@ -55,5 +68,4 @@ export PATH="/usr/local/bin:$PATH"
 FOR_COMPILE="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
 
 export SBT_OPTS=$FOR_COMPILE
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 

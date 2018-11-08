@@ -1,76 +1,48 @@
 [user]
-	email = kkwak@protonmail.com
-	name = kkwak
+email = kkwak@protonmail.com
+name = kkwak
 
 [core]
-  pager = cat
+pager = cat
 
 [alias]
-	co = checkout
-	cp = cherry-pick
-	br = branch
-	ci = commit	
-	st = status
-        cg = config --global -e
-        df = diff --ignore-space-at-eol -b -w 
-	spull = !git-svn fetch && git-svn rebase
-	spush = !git-svn dcommit
-	lg = log -25 --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cr%Creset | %C(yellow)%d%Creset %s %C(bold yellow)[%an]%Creset' --abbrev-commit --date=short
-	tidy = !git fsck --unreachable && git reflog expire --expire=0 --all && git repack --max-pack-size=100M -a -d -l && git prune && git gc --aggressive
-	mt = mergetool
+co = checkout
+cp = cherry-pick
+br = branch
+ci = commit	
+st = status
+cg = config --global -e
+df = diff --ignore-space-at-eol -b -w 
+spull = !git-svn fetch && git-svn rebase
+spush = !git-svn dcommit
+lg = log -25 --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cr%Creset | %C(yellow)%d%Creset %s %C(bold yellow)[%an]%Creset' --abbrev-commit --date=short
+tidy = !git fsck --unreachable && git reflog expire --expire=0 --all && git repack --max-pack-size=100M -a -d -l && git prune && git gc --aggressive
+mt = mergetool
 
 [credential]
-	helper = osxkeychain
+helper = osxkeychain
 
 [merge]
-	tool = bc3
-[mergetool]
-	prompt = false
-	keepBackup = false
-[diff]
-	tool = bc3
-[difftool]
-  prompt = false
+tool = bc3
 
-[color]
-	ui = auto
-	interactive = auto
-	merge = auto
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+[mergetool]
+prompt = false
+keepBackup = false
+
+[diff]
+tool = bc3
+
+[difftool]
+prompt = false
+
 [push]
-	default = current
+default = current
+
 [pull]
-	default = simple
-	rebase = true
+default = simple
+rebase = true
+
 [branch]
-  autosetupmerge = true
-	autosetuprebase = always
-[pack]
-	windowMemory = 256m
-	packSizeLimit = 100m
-#
-#	[commit]
-#
-#	# set the filepath to the template
-#
-#	# This filename can be whatever you want, I called it this
-#
-#		template = ~/.git.commit.template
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-#[rerere]
-	#enabled = true
+autosetupmerge = true
+autosetuprebase = always
+

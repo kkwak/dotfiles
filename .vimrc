@@ -166,7 +166,7 @@ set undolevels=500     "maximum number of changes that can be undone
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab     " Do not expand tabs with spaces
+set expandtab     " expand tabs with spaces
 set tabstop=2 softtabstop=2 shiftwidth=2
 set smarttab
 set lbr
@@ -182,11 +182,7 @@ let g:netrw_preview = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufRead,BufNewFile  *.build         setfiletype xml
 autocmd BufRead,BufNewFile  *.targets       setfiletype xml
-autocmd BufRead,BufNewFile  *.nunit         setfiletype xml
 autocmd BufRead,BufNewFile  *.config        setfiletype xml
-autocmd BufRead,BufNewFile  *.csproj        setfiletype xml
-autocmd BufRead,BufNewFile  *.xaml          setfiletype xml
-autocmd BufRead,BufNewFile  *.DotSettings   setfiletype xml
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -203,14 +199,15 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => python
 """"""""""""""""""""""""""""""
-"au BufNewFile,BufRead *.py
-"    \ set tabstop=4
-"    \ set softtabstop=4
-"    \ set shiftwidth=4
-"    \ set textwidth=79
-"    \ set expandtab
-"    \ set autoindent
-"    \ set fileformat=unix
+au BufNewFile,BufRead *.py 
+    \ setfiletype python
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 nnoremap <leader>r :!%:p<CR>
 
