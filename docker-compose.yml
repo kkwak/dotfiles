@@ -1,0 +1,10 @@
+version: '0.1'
+services:
+  terminal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER_NAME: ${USER_NAME:?err}
+        USER_ID: ${USER_ID:?err}
+        GROUP_ID: ${GROUP_ID:?err}
