@@ -1,10 +1,16 @@
-version: '0.1'
+version: '3.3'
 services:
   terminal:
+    container_name: zsh
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        USER_NAME: ${USER_NAME:?err}
-        USER_ID: ${USER_ID:?err}
-        GROUP_ID: ${GROUP_ID:?err}
+        UID: ${UID:?UserId is not set}
+        USER_NAME: ${USER_NAME:?Username is not set}
+        GID: ${GID:?GroupId is not set}
+        GROUP_NAME: ${GROUP_NAME:?Groupname is not set}
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/home/${USER_NAME}
