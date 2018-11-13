@@ -258,6 +258,15 @@ function! ToggleVExplorer()
 endfunction
 map <silent> <C-E> :call ToggleVExplorer()<CR> 
 
+
+
+""""""""""""""""""""""""""""""
+" => NVim Specific
+""""""""""""""""""""""""""""""
+if has('nvim')
+  set clipboard+=unnamedplus
+endif
+
 """"""""""""""""""""""""""""""
 " => Plugin configuration
 """"""""""""""""""""""""""""""
