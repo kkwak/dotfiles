@@ -1,7 +1,8 @@
 version: '3.3'
 services:
   terminal:
-    container_name: zsh
+    hostname: docker-terminal
+    container_name: linux-terminal
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,7 +11,5 @@ services:
         USER_NAME: ${USER_NAME:?Username is not set}
         GID: ${GID:?GroupId is not set}
         GROUP_NAME: ${GROUP_NAME:?Groupname is not set}
-    tty: true
-    stdin_open: true
     volumes:
       - .:/home/${USER_NAME}
