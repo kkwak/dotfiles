@@ -29,18 +29,37 @@ case `uname` in
     alias e='emacsclient -nw -c -a "" "$@"'
 
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+    export EDITOR="nvim"
+
+    alias v='nvim'
+    alias vim='nvim'
+
+    # python https://github.com/Qix-/better-exceptions
+    export BETTER_EXCEPTIONS=1
+
+    export GOPATH=$HOME/projects/golang
+
+    export PATH="/usr/local/bin:$PATH"
+    FOR_COMPILE="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
+    export SBT_OPTS=$FOR_COMPILE
+
+
   ;;
   Linux)
-    # commands for Linux go here
+    export EDITOR="vim"
+    alias v='vim'
+
+    export PATH="/usr/local/bin:$PATH"
+
+
   ;;
   FreeBSD)
+    export EDITOR="vim"
+    alias v='vim'
     # commands for FreeBSD go here
   ;;
 esac
 
-
-# Customize to your needs...
-export EDITOR="vim"
 bindkey -v
 
 # https://github.com/junegunn/fzf : command-line fuzzy finder
@@ -57,15 +76,4 @@ alias b='git br'
 alias gg='git gui'
 alias gk='gitk --all'
 
-# python
-# https://github.com/Qix-/better-exceptions
-export BETTER_EXCEPTIONS=1
-
-export GOPATH=$HOME/projects/golang
-
-export PATH="/usr/local/bin:$PATH"
-
-FOR_COMPILE="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
-
-export SBT_OPTS=$FOR_COMPILE
 
