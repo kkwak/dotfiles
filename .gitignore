@@ -1,5 +1,10 @@
-.vim/spell/
-.tmux/resurrect/
 .ash_history
+.cache
+.env
+.tmux/resurrect/
+.vim/spell/
+.vim/.netrwhist
+.viminfo
+.zcompdump
 .zhistory
 
