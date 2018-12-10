@@ -1,2 +1,5 @@
 .vim/spell/
+.tmux/resurrect/
+.ash_history
+.zhistory
 
