@@ -233,9 +233,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	endfun
 
 	" Vim Highlighting
-  "call <SID>X("Normal", s:foreground, s:background, "")  " original
-  " to enable tmux dimming of inactive: http://www.deanbodenham.com/learn/tmux-pane-colours.html
-	call <SID>X("Normal", s:foreground, "", "")
+  if has("gui_running") || has("gui_vimr")
+    " original version
+    call <SID>X("Normal", s:foreground, s:background, "")
+  else 
+    " to enable tmux dimming of inactive: http://www.deanbodenham.com/learn/tmux-pane-colours.html
+    call <SID>X("Normal", s:foreground, "", "")
+  endif
 	call <SID>X("LineNr", s:selection, "", "")
 	call <SID>X("NonText", s:selection, "", "")
 	call <SID>X("SpecialKey", s:selection, "", "")

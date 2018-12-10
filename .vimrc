@@ -23,8 +23,8 @@
   Plug 'bling/vim-airline'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
-  Plug 'davidhalter/jedi-vim', { 'for': 'python' }
   Plug 'nvie/vim-flake8', { 'for': 'python' }
+  Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
   " Initialize plugin system
   call plug#end()
@@ -97,7 +97,7 @@
 
   if has("gui_running")
     set guioptions-=T
-    set guifont   =Hack:h12
+    set guifont   =Hack:h14
     set columns   =150
     set lines     =50               " 50 lines of text instead of 24,
   endif
