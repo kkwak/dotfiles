@@ -15,7 +15,19 @@
   filetype plugin on
   filetype indent on
 
-  call pathogen#infect()
+  call plug#begin('~/.local/share/nvim/plugged')
+  
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
+  Plug 'bling/vim-airline'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
+  Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+  Plug 'nvie/vim-flake8', { 'for': 'python' }
+
+  " Initialize plugin system
+  call plug#end()
 
   " Fast editing of the .vimrc (with auto reload)
   autocmd! bufwritepost vimrc source ~/.vimrc
