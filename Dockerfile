@@ -12,8 +12,6 @@ RUN apk add --update zsh \
   python3-dev \
   httpie \
   the_silver_searcher
-# alpine doesn't have chsh
-ENV LC_ALL=en_US.UTF-8
 
 ARG UID
 ARG GID
@@ -21,6 +19,13 @@ ARG USER_NAME
 ARG GROUP_NAME
 
 VOLUME /home/${USER_NAME}
+WORKDIR /home/${USER_NAME}
+
+
+ENV LC_ALL=en_US.UTF-8
+ENV HOME="/home/${USER_NAME}" \
+    LANGUAGE="en" \
+    LANG="en_US"
 
 ## https://github.com/mhart/alpine-node/issues/48#issuecomment-430902787
 RUN if [ -z "`getent group $GID`" ]; then \
@@ -34,21 +39,12 @@ RUN if [ -z "`getent group $GID`" ]; then \
       usermod -l ${USER_NAME} -g $GID -d /home/${USER_NAME} -m `getent passwd $UID | cut -d: -f1`; \
     fi
 
-### BAD
-# RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
-#   if getent passwd ${USER_ID} ; then userdel -f ${USER_NAME} ;fi &&\
-#   if getent group ${GROUP_ID} ; then \
-#     groupdel $(getent group 20 | awk '{split($0,a,":");print a[1]}') \
-#   ;fi &&\
-#   groupadd -g ${GROUP_ID} staff &&\
-#   useradd -l -u ${USER_ID} -g staff ${USER_NAME} \
-# ;fi &&\
-# 
-#sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
+# sudo usage is not recommended - see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
+#RUN echo "${USER_NAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USER_NAME} && \
+#    chmod 0440 /etc/sudoers.d/${USER_NAME}
 
-RUN echo "${USER_NAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USER_NAME} && \
-    chmod 0440 /etc/sudoers.d/${USER_NAME}
-
-WORKDIR /home/${USER_NAME}
 RUN chown ${USER_NAME}:${GROUP_NAME} /home/${USER_NAME}
-USER ${USER_NAME}
+#USER ${USER_NAME}
+
+
+ENTRYPOINT ["tmux"]

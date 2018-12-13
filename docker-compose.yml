@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   terminal:
+    image: terminal
     hostname: docker-terminal
     container_name: linux-terminal
     build:
