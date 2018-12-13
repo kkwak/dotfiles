@@ -30,9 +30,11 @@ case `uname` in
 
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
     export EDITOR="nvim"
-
     alias v='nvim'
     alias vim='nvim'
+
+    alias wg-up='wg-quick up mullvad-gb1-gb2'
+    alias wg-down='wg-quick down mullvad-gb1-gb2'
 
     # python https://github.com/Qix-/better-exceptions
     export BETTER_EXCEPTIONS=1
@@ -43,17 +45,30 @@ case `uname` in
     FOR_COMPILE="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
     export SBT_OPTS=$FOR_COMPILE
 
+    # called before every command 
+    precmd () {
+      printf '\033]2;'$(pwd)'\033\\'
+    }
+    eval "$(pyenv init -)"
+
+    # tabtab source for serverless package
+    # uninstall by removing these lines or running `tabtab uninstall serverless`
+    [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+    # tabtab source for sls package
+    # uninstall by removing these lines or running `tabtab uninstall sls`
+    [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
   ;;
   Linux)
+    echo "Setting up for Linux"
     export EDITOR="vim"
     alias v='vim'
 
     export PATH="/usr/local/bin:$PATH"
 
-
   ;;
   FreeBSD)
+    echo "Setting up for FreeBSD"
     export EDITOR="vim"
     alias v='vim'
     # commands for FreeBSD go here
@@ -75,5 +90,4 @@ alias l='git lg'
 alias b='git br'
 alias gg='git gui'
 alias gk='gitk --all'
-
 
