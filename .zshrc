@@ -33,8 +33,8 @@ case `uname` in
     alias v='nvim'
     alias vim='nvim'
 
-    alias wg-up='wg-quick up mullvad-gb1-gb2'
-    alias wg-down='wg-quick down mullvad-gb1-gb2'
+    alias wg-up='sudo wg-quick up london'
+    alias wg-down='sudo wg-quick down london'
 
     # python https://github.com/Qix-/better-exceptions
     export BETTER_EXCEPTIONS=1

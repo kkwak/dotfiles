@@ -4,6 +4,7 @@ name = kkwak
 
 [core]
 pager = cat
+editor = nvim
 
 [alias]
 co = checkout

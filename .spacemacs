@@ -43,18 +43,20 @@ This function should only modify configuration layer settings."
      auto-completion
      better-defaults
      emacs-lisp
-     ;; git
+     git
      ;; markdown
      multiple-cursors
-     neotree
+     ;;neotree
      org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
+     (colors :variables colors-colorize-identifiers 'all)
+
      tmux
      spell-checking
      syntax-checking
-     version-control
+     ;;version-control
      python
      osx
      )
@@ -189,8 +191,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         monokai
+   dotspacemacs-themes '(monokai
+                         spacemacs-dark
                          zenburn
                          spacemacs-light
                          )
@@ -211,7 +213,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 14
+                               :size 15
                                :weight normal
                                :width normal)
 
@@ -446,13 +448,12 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  ;;truncate-lines t
-  ;; When returning to Evil-Normal-Mode stay on same character
-  ;;evil-move-cursor-back nil
+
   ;; Required for GUI Emacs - so that zsh prezto doesn't load tmux
   (setenv "EMACS" "true")
   ;;(setq exec-path (append exec-path (list "/usr/local/bin/" )))
   ;;(global-linum-mode t)
+  (global-visual-line-mode t) ;; enable the visual-line-mode
 
   )
 
@@ -492,7 +493,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (winum org-brain neotree mwim live-py-mode helm-make evil-matchit evil-goggles editorconfig doom-modeline diff-hl auto-yasnippet ace-link counsel swiper ivy iedit git-commit with-editor helm helm-core which-key use-package org-plus-contrib hydra zenburn-theme yasnippet-snippets yapfify ws-butler volatile-highlights vi-tilde-fringe uuidgen unfill toc-org symon string-inflection spaceline-all-the-icons shrink-path reveal-in-osx-finder restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file nameless move-text monokai-theme macrostep lorem-ipsum link-hint launchctl indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot git-gutter-fringe git-gutter-fringe+ fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav eldoc-eval dumb-jump dotenv-mode diminish cython-mode counsel-projectile company-statistics company-anaconda column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote bind-key auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-jump-helm-line ac-ispell))))
+    (pyvenv org-brain live-py-mode evil-surround evil-nerd-commenter editorconfig doom-modeline ace-window ace-link counsel swiper ivy smartparens flycheck flyspell-correct company helm helm-core projectile magit git-commit ghub spaceline org-plus-contrib zenburn-theme yasnippet-snippets yapfify ws-butler writeroom-mode with-editor winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill treepy toc-org symon string-inflection spaceline-all-the-icons smeargle shrink-path reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pytest pyenv-mode py-isort powerline popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree nameless mwim move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum link-hint launchctl indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag graphql google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav eldoc-eval dumb-jump dotenv-mode diminish cython-mode counsel-projectile company-statistics company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

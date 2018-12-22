@@ -1,11 +1,3 @@
-  " => General
-  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  set nocompatible                " must be first line
-
-  set encoding=utf-8							" marks the default encoding
-  scriptencoding utf-8						" must be *after* the set encoding
-
-  source $VIMRUNTIME/filetype.vim " Add filetype specific manipulations - highlighting/syntax/spacing/etc
 
   set history=400                 " Sets how many lines of history VIM has to remember
   let mapleader   = "\<Space>"    " Replace the default <leader> key from '\' to space 
@@ -22,9 +14,11 @@
   Plug 'tpope/vim-surround'
   Plug 'bling/vim-airline'
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'ntpeters/vim-better-whitespace'
   Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
   Plug 'nvie/vim-flake8', { 'for': 'python' }
   Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
 
   " Initialize plugin system
   call plug#end()
@@ -196,6 +190,7 @@ autocmd BufRead,BufNewFile  *.build         setfiletype xml
 autocmd BufRead,BufNewFile  *.targets       setfiletype xml
 autocmd BufRead,BufNewFile  *.config        setfiletype xml
 
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

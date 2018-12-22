@@ -8,16 +8,8 @@
   <https://github.com/syl20bnr/spacemacs>
 
 ### Vim
-  <https://github.com/tpope/vim-surround>
-  
-  <https://github.com/tpope/vim-repeat>
-  
-  <https://github.com/kien/ctrlp.vim>
-  
-  <https://github.com/bling/vim-airline>
-
-### Ranger
-  https://github.com/hut/ranger
+Using plug.vim
+~/.local/share/nvim/site/autoload
 
 ## Setup
 Run setup (destination defaults to $HOME)
