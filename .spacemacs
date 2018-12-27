@@ -48,11 +48,10 @@ This function should only modify configuration layer settings."
      multiple-cursors
      ;;neotree
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      (colors :variables colors-colorize-identifiers 'all)
-
      tmux
      spell-checking
      syntax-checking
@@ -449,12 +448,11 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
-  ;; Required for GUI Emacs - so that zsh prezto doesn't load tmux
-  (setenv "EMACS" "true")
-  ;;(setq exec-path (append exec-path (list "/usr/local/bin/" )))
-  ;;(global-linum-mode t)
-  (global-visual-line-mode t) ;; enable the visual-line-mode
-
+    ;; Required for GUI Emacs - so that zsh prezto doesn't load tmux
+    (setenv "EMACS" "true")
+    (setq exec-path (append exec-path (list "/usr/local/bin/" )))
+    ;;  (global-linum-mode t)
+    (global-visual-line-mode t) ;; enable the visual-line-mode
   )
 
 (defun dotspacemacs/user-load ()
@@ -470,13 +468,28 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-
   ;; other options are: 'arrow, ...
-  (setq powerline-default-separator nil)
+  ;;(setq powerline-default-separator nil)
+  ;;(ido-vertical-mode -1)
 
   ;;(setq linum-format "%4d \u2502 ")
-  (setq linum-format "%4d ")
+  ;;(setq linum-format "%4d ")
+  (setq mac-system-move-file-to-trash-use-finder nil)
 
+  (custom-set-faces
+    ;; custom-set-faces was added by Custom.
+    ;; If you edit it by hand, you could mess it up, so be careful.
+    ;; Your init file should contain only one such instance.
+    ;; If there is more than one, they won't work right.
+    '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
+    '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
+    '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+    '(org-level-4 ((t (:inherit outline-3 :height 1.0))))
+    '(org-level-5 ((t (:inherit outline-3 :height 1.0))))
+    '(org-level-6 ((t (:inherit outline-3 :height 1.0))))
+    '(org-level-7 ((t (:inherit outline-3 :height 1.0))))
+    '(org-level-8 ((t (:inherit outline-3 :height 1.0))))
+    '(region ((t (:background "darkgoldenrod" :foreground "gray0")))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -493,7 +506,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pyvenv org-brain live-py-mode evil-surround evil-nerd-commenter editorconfig doom-modeline ace-window ace-link counsel swiper ivy smartparens flycheck flyspell-correct company helm helm-core projectile magit git-commit ghub spaceline org-plus-contrib zenburn-theme yasnippet-snippets yapfify ws-butler writeroom-mode with-editor winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill treepy toc-org symon string-inflection spaceline-all-the-icons smeargle shrink-path reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pytest pyenv-mode py-isort powerline popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree nameless mwim move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum link-hint launchctl indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag graphql google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav eldoc-eval dumb-jump dotenv-mode diminish cython-mode counsel-projectile company-statistics company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-jump-helm-line ac-ispell))))
+    (pyvenv org-brain live-py-mode evil-surround evil-nerd-commenter editorconfig doom-modeline ace-window ace-link counsel swiper ivy smartparens flycheck flyspell-correct company helm helm-core projectile magit git-commit ghub spaceline org-plus-contrib zenburn-theme yasnippet-snippets yapfify ws-butler writeroom-mode with-editor winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill treepy toc-org symon string-inflection spaceline-all-the-icons smeargle shrink-path reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pytest pyenv-mode py-isort powerline popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree nameless mwim move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum link-hint launchctl indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag graphql google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav eldoc-eval dumb-jump dotenv-mode diminish cython-mode counsel-projectile company-statistics company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode 
+centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -501,3 +515,4 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  )
 )
+

@@ -5,6 +5,9 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# local folder created by poetry (python)
+fpath+=~/.zfunc
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -16,7 +19,7 @@ if [[ -z "$LANG" ]]; then
 fi
 
 export LC_ALL=$LANG
-export TERM=screen-256color
+export TERM=xterm-256color
 
 case `uname` in
   Darwin)
@@ -32,20 +35,15 @@ case `uname` in
     export EDITOR="nvim"
     alias v='nvim'
     alias vim='nvim'
-
-    alias wg-up='sudo wg-quick up london'
-    alias wg-down='sudo wg-quick down london'
+    alias ssh='TERM=xterm-256color ssh'
 
     # python https://github.com/Qix-/better-exceptions
     export BETTER_EXCEPTIONS=1
 
     export GOPATH=$HOME/projects/golang
+    export PATH=$JAVA_HOME/bin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/bin::$PATH
 
-    export PATH="/usr/local/bin:$PATH"
-    FOR_COMPILE="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
-    export SBT_OPTS=$FOR_COMPILE
-
-    # called before every command 
+    # called before every command
     precmd () {
       printf '\033]2;'$(pwd)'\033\\'
     }
@@ -77,17 +75,21 @@ esac
 
 bindkey -v
 
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
+
 # https://github.com/junegunn/fzf : command-line fuzzy finder
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
-alias ll='ls -lah'
+alias ll='ls -Glah'
 
-# GIT
-alias 3rdup='zsh ~/.config/update-submodules.sh'
-alias up='zsh ~/.config/up.sh'
-alias s='git st'
+# git related aliases
+alias s='git status'
 alias l='git lg'
-alias b='git br'
+alias b='git branch'
 alias gg='git gui'
 alias gk='gitk --all'
+
+alias up='zsh ~/.config/up.sh'
 

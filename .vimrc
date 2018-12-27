@@ -1,127 +1,137 @@
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible                " must be first line
 
-  set history=400                 " Sets how many lines of history VIM has to remember
-  let mapleader   = "\<Space>"    " Replace the default <leader> key from '\' to space 
-  let g:mapleader = "\<Space>"    " Replace the default <leader> key from '\' to space 
+set encoding=utf-8                                                        " marks the default encoding
+scriptencoding utf-8                                                " must be *after* the set encoding
 
-  " Enable filetype plugin
-  filetype plugin on
-  filetype indent on
+source $VIMRUNTIME/filetype.vim " Add filetype specific manipulations - highlighting/syntax/spacing/etc
 
-  call plug#begin('~/.local/share/nvim/plugged')
-  
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-surround'
-  Plug 'bling/vim-airline'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'ntpeters/vim-better-whitespace'
-  Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
-  Plug 'nvie/vim-flake8', { 'for': 'python' }
-  Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+set history=400                 " Sets how many lines of history VIM has to remember
+let mapleader   = "\<Space>"    " Replace the default <leader> key from '\' to space 
+let g:mapleader = "\<Space>"    " Replace the default <leader> key from '\' to space 
+
+" Enable filetype plugin
+filetype plugin on
+filetype indent on
+
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
+Plug 'nvie/vim-flake8', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 
-  " Initialize plugin system
-  call plug#end()
+" Initialize plugin system
+call plug#end()
 
-  " Fast editing of the .vimrc (with auto reload)
-  autocmd! bufwritepost vimrc source ~/.vimrc
+" Fast editing of the .vimrc (with auto reload)
+autocmd! bufwritepost vimrc source ~/.vimrc
 
-  set shortmess+=I	" Remove the initial splash text
-  set autoread			" Set to auto read when a file is changed from the outside
-  set autowrite			" automatically write a file when leaving a modified buffer
+set shortmess+=I        " Remove the initial splash text
+set autoread                        " Set to auto read when a file is changed from the outside
+set autowrite                        " automatically write a file when leaving a modified buffer
 
-  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " => VIM user interface
-  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " a ruler on steroids
-  set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-  "set so=7                        " Set 7 lines to the cursors - when moving vertical..
-  set showmode                    " display the current mode
-  set wildmenu                    " Turn on WiLd menu
-  set wildchar=<Tab>							"
-  set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
-  set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-  set cursorline                  " highlight current line
-  set ruler                       " Always show current position
-  set showcmd                     " show partial commands in status line selected characters/lines in visual mode
-  set cmdheight=2                 " The commandbar height
-  set hidden                      " Change buffer - without saving
-  set backspace=eol,start,indent  " Set backspace config
-  set whichwrap+=<,>,h,l
-  set ignorecase                  " Ignore case when searching
-  set smartcase
-  set hlsearch                    " Highlight search things
-  set incsearch                   " Make search act like search in modern browsers
-  set nolazyredraw                " Don't redraw while executing macros
-  set magic                       " Set magic on, for regular expressions
-  set showmatch                   " Show matching braces when text indicator is over them
-  set mat=2                       " How many tenths of a second to blink
-  set title
+set rtp+=/usr/local/opt/fzf
 
-  set cpoptions+=$
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" a ruler on steroids
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+"set so=7                        " Set 7 lines to the cursors - when moving vertical..
+set showmode                    " display the current mode
+set wildmenu                    " Turn on WiLd menu
+set wildchar=<Tab>                                                        "
+set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set cursorline                  " highlight current line
+set ruler                       " Always show current position
+set showcmd                     " show partial commands in status line selected characters/lines in visual mode
+set cmdheight=2                 " The commandbar height
+set hidden                      " Change buffer - without saving
+set backspace=eol,start,indent  " Set backspace config
+set whichwrap+=<,>,h,l
+set ignorecase                  " Ignore case when searching
+set smartcase
+set hlsearch                    " Highlight search things
+set incsearch                   " Make search act like search in modern browsers
+set nolazyredraw                " Don't redraw while executing macros
+set magic                       " Set magic on, for regular expressions
+set showmatch                   " Show matching braces when text indicator is over them
+set mat=2                       " How many tenths of a second to blink
+set title
 
-  " No sound on errors
-  set noerrorbells
-  set novisualbell
-  set t_vb=
-  set tm=500
+set cpoptions+=$
 
-  " Use standard regex
-  nnoremap / /\v
-  vnoremap / /\v
+" No sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
 
-  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " => Colors and Fonts
-  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  syntax on          "Enable syntax hl
-  set number         " show line numbers
-  set fileencoding=utf-8
-  set background=dark
-  set ffs=unix,dos,mac     "Default file types
+" Use standard regex
+nnoremap / /\v
+vnoremap / /\v
 
-  colorscheme Tomorrow-Night-Bright
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on          "Enable syntax hl
+set number         " show line numbers
+set fileencoding=utf-8
+set background=dark
+set ffs=unix,dos,mac     "Default file types
 
-  if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-    set t_Co=256
-  endif
+colorscheme Tomorrow-Night-Bright
 
-  if has("gui_running")
-    set guioptions-=T
-    set guifont   =Hack:h14
-    set columns   =150
-    set lines     =50               " 50 lines of text instead of 24,
-  endif
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+  set t_Co=256
+endif
 
-  set mousehide                   " Hide the mouse when typing text
-  set laststatus=2
-  hi Cursor guibg=green
+if has("gui_running")
+  set guioptions-=T
+  set guifont   =Hack:h14
+  set columns   =150
+  set lines     =50               " 50 lines of text instead of 24,
+endif
 
-  set listchars=trail:·,tab:▸\ ,precedes:«,extends:»,eol:¬
-  "set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
-  set list
+set mousehide                   " Hide the mouse when typing text
+set laststatus=2
+hi Cursor guibg=green
 
-  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " => Moving around, tabs and buffers
-  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set listchars=trail:·,tab:▸\ ,precedes:«,extends:»,eol:¬
+"set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+set list
 
-  " Ignore HELP when trying to push the ESC button!
-  inoremap <F1> <ESC>
-  nnoremap <F1> <ESC>
-  vnoremap <F1> <ESC>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  nnoremap <tab> %			" Much easier to press tab to match
-  vnoremap <tab> %
+" Ignore HELP when trying to push the ESC button!
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
-  nnoremap ; :
-  nnoremap <leader><space> :noh<cr> " Remove any highlights
-  nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>	" cd to update the pwd to dir of opened file
+nnoremap <tab> %                        " Much easier to press tab to match
+vnoremap <tab> %
 
-  " System clipboard interaction
-  set clipboard=unnamed
+nnoremap ; :
+nnoremap <leader><space> :noh<cr> " Remove any highlights
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>        " cd to update the pwd to dir of opened file
+
+" System clipboard interaction
+set clipboard+=unnamed,unnamedplus
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -152,14 +162,12 @@ map <leader>bk :bd<cr>
 nnoremap <Leader>fs :w<CR>
 nnoremap <leader>w- <C-w>s<C-w>j                                                   " Create a split on the current buffer
 nnoremap <leader>w/ <C-w>v<C-w>l                                                   " Create a vsplit on the current buffer
- 
 
 nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
 nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
 nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
 nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
 nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -172,7 +180,7 @@ set undolevels=500     "maximum number of changes that can be undone
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab     " expand tabs with spaces
+set expandtab     " Do not expand tabs with spaces
 set tabstop=2 softtabstop=2 shiftwidth=2
 set smarttab
 set lbr
@@ -182,6 +190,14 @@ set copyindent
 set si                  "Smart indet
 set nowrap              "No Wrap lines
 let g:netrw_preview = 1
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+map <leader>xdw :call TrimWhitespace()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Default FileTypes
@@ -195,7 +211,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nospell                 " spell checking on
-map <leader>ss :setlocal spell!<CR>		"Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<CR>  "Pressing ,ss will toggle and untoggle spell checking
 
 "Shortcuts using <leader>
 map <leader>sn ]s
@@ -204,7 +220,7 @@ map <leader>sa zg
 map <leader>s? z=
 
 """"""""""""""""""""""""""""""
-" => python
+" => Python
 """"""""""""""""""""""""""""""
 au BufNewFile,BufRead *.py 
     \ setfiletype python
@@ -217,6 +233,8 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 nnoremap <leader>r :!%:p<CR>
+autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; python3' shellescape(@%, 1)<cr>
+
 
 """"""""""""""""""""""""""""""
 " => Xml
@@ -229,20 +247,21 @@ set foldlevelstart=9
 """"""""""""""""""""""""""""""
 " => Json
 """"""""""""""""""""""""""""""
-command -range JsonFmt <line1>,<line2>!python3 -m json.tool
+command! -range JsonFmt <line1>,<line2>!python3 -m json.tool
 vnoremap & :JsonFmt<CR>
+map <leader>jt :JsonFmt<CR>
 
 " To enable the saving and restoring of screen positions.
 let g:screen_size_restore_pos = 1
 
 let g:netrw_banner       = 0
 let g:netrw_keepdir      = 0
-let g:netrw_liststyle    = 1		" set default view: 3 - tree mode 
-let g:netrw_sort_options = 'i'		"
-let g:netrw_browse_split = 4		" open file in previous buffer
-let g:netrw_preview      = 1		" preview window in a vertical split
-let g:netrw_altv         = 1		" open files on right
-let g:netrw_winsize      = 20		" size of netrw window
+let g:netrw_liststyle    = 1                " set default view: 3 - tree mode 
+let g:netrw_sort_options = 'i'                "
+let g:netrw_browse_split = 4                " open file in previous buffer
+let g:netrw_preview      = 1                " preview window in a vertical split
+let g:netrw_altv         = 1                " open files on right
+let g:netrw_winsize      = 20                " size of netrw window
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -263,16 +282,7 @@ function! ToggleVExplorer()
       let t:expl_buf_num = bufnr("%")
   endif
 endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR> 
-
-
-
-""""""""""""""""""""""""""""""
-" => NVim Specific
-""""""""""""""""""""""""""""""
-if has('nvim')
-  set clipboard+=unnamedplus
-endif
+map <silent> <C-E> :call ToggleVExplorer()<CR>
 
 """"""""""""""""""""""""""""""
 " => Plugin configuration
@@ -289,6 +299,8 @@ let g:airline_section_z=''
 let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll|pdb)$',
-	\ }
+        \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+        \ 'file': '\v\.(exe|so|dll|pdb)$',
+        \ }
+
+
