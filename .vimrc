@@ -52,7 +52,7 @@ set wildmenu                    " Turn on WiLd menu
 set wildchar=<Tab>                                                        "
 set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-set cursorline                  " highlight current line
+"set cursorline                  " highlight current line
 set ruler                       " Always show current position
 set showcmd                     " show partial commands in status line selected characters/lines in visual mode
 set cmdheight=2                 " The commandbar height
