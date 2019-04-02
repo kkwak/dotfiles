@@ -8,8 +8,8 @@ scriptencoding utf-8                                                " must be *a
 source $VIMRUNTIME/filetype.vim " Add filetype specific manipulations - highlighting/syntax/spacing/etc
 
 set history=400                 " Sets how many lines of history VIM has to remember
-let mapleader   = "\<Space>"    " Replace the default <leader> key from '\' to space 
-let g:mapleader = "\<Space>"    " Replace the default <leader> key from '\' to space 
+let mapleader   = "\<Space>"    " Replace the default <leader> key from '\' to space
+let g:mapleader = "\<Space>"    " Replace the default <leader> key from '\' to space
 
 " Enable filetype plugin
 filetype plugin on
@@ -20,7 +20,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'bling/vim-airline'
+"Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
@@ -46,7 +47,7 @@ set rtp+=/usr/local/opt/fzf
 " a ruler on steroids
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 "set so=7                        " Set 7 lines to the cursors - when moving vertical..
-set showmode                    " display the current mode
+set noshowmode                    " display the current mode
 set wildmenu                    " Turn on WiLd menu
 set wildchar=<Tab>                                                        "
 set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
@@ -111,7 +112,7 @@ set laststatus=2
 hi Cursor guibg=green
 
 set listchars=trail:·,tab:▸\ ,precedes:«,extends:»,eol:¬
-"set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+"set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set list
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,7 +142,7 @@ nnoremap k gk
 " http://vim.wikia.com/wiki/Copy_or_change_search_hit
 vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
- 
+
 set guitablabel=%t
 set directory=.,$TEMP
 
@@ -149,16 +150,16 @@ set directory=.,$TEMP
 " => Mimic spacemacs bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>fed :e! ~/.vimrc<cr>
- 
+
 map <leader>wj <C-W>j
 map <leader>wk <C-W>k
 map <leader>wh <C-W>h
 map <leader>wl <C-W>l
- 
+
 map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
 map <leader>bk :bd<cr>
- 
+
 nnoremap <Leader>fs :w<CR>
 nnoremap <leader>w- <C-w>s<C-w>j                                                   " Create a split on the current buffer
 nnoremap <leader>w/ <C-w>v<C-w>l                                                   " Create a vsplit on the current buffer
@@ -222,7 +223,7 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => Python
 """"""""""""""""""""""""""""""
-au BufNewFile,BufRead *.py 
+au BufNewFile,BufRead *.py
     \ setfiletype python
     \ set tabstop=4
     \ set softtabstop=4
@@ -256,7 +257,7 @@ let g:screen_size_restore_pos = 1
 
 let g:netrw_banner       = 0
 let g:netrw_keepdir      = 0
-let g:netrw_liststyle    = 1                " set default view: 3 - tree mode 
+let g:netrw_liststyle    = 1                " set default view: 3 - tree mode
 let g:netrw_sort_options = 'i'                "
 let g:netrw_browse_split = 4                " open file in previous buffer
 let g:netrw_preview      = 1                " preview window in a vertical split
@@ -287,20 +288,10 @@ map <silent> <C-E> :call ToggleVExplorer()<CR>
 """"""""""""""""""""""""""""""
 " => Plugin configuration
 """"""""""""""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 0
-let g:airline_powerline_fonts = 0
-let g:airline_theme='dark'
-let g:airline_left_sep=' '
-let g:airline_left_alt_sep='|'
-let g:airline_right_sep=' '
-let g:airline_right_alt_sep='|'
-let g:airline_section_z=''
-
 let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
         \ 'file': '\v\.(exe|so|dll|pdb)$',
         \ }
-
 

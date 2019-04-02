@@ -33,6 +33,7 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
+  'gnu-utility' \
   'utility' \
   'completion' \
   'git' \
@@ -195,7 +196,7 @@ zstyle ':prezto:module:prompt' theme 'steeef'
 #
 
 # Auto set the tab and window titles.
-# zstyle ':prezto:module:terminal' auto-title 'yes'
+ zstyle ':prezto:module:terminal' auto-title 'no'
 
 # Set the window title format.
 # zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
@@ -219,7 +220,7 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
-# zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+ zstyle ':prezto:module:tmux:session' name 'MAIN'
 
 #
 # Utility

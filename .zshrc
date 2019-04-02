@@ -21,6 +21,10 @@ fi
 export LC_ALL=$LANG
 export TERM=xterm-256color
 
+
+# https://github.com/junegunn/fzf : command-line fuzzy finder
+[ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
+
 case `uname` in
   Darwin)
     # commands for OS X go here
@@ -32,6 +36,8 @@ case `uname` in
     alias e='emacsclient -nw -c -a "" "$@"'
 
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+    export VISUAL="nvim"
     export EDITOR="nvim"
     alias v='nvim'
     alias vim='nvim'
@@ -43,10 +49,6 @@ case `uname` in
     export GOPATH=$HOME/projects/golang
     export PATH=$JAVA_HOME/bin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/bin::$PATH
 
-    # called before every command
-    precmd () {
-      printf '\033]2;'$(pwd)'\033\\'
-    }
     eval "$(pyenv init -)"
 
     # tabtab source for serverless package
@@ -55,6 +57,13 @@ case `uname` in
     # tabtab source for sls package
     # uninstall by removing these lines or running `tabtab uninstall sls`
     [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+
+    alias preview="fzf --preview 'bat --color \"always\" {}'"
+    # add support for ctrl+o to open selected file in VS Code
+    export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(nvim {})+abort'"
+
+    alias top="sudo htop"
 
   ;;
   Linux)
@@ -79,9 +88,6 @@ if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
 
-# https://github.com/junegunn/fzf : command-line fuzzy finder
-[ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
-
 alias ll='ls -Glah'
 
 # git related aliases
@@ -90,6 +96,8 @@ alias l='git lg'
 alias b='git branch'
 alias gg='git gui'
 alias gk='gitk --all'
+alias m='neomutt'
+alias r='ranger'
 
 alias up='zsh ~/.config/up.sh'
 
