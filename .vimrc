@@ -20,11 +20,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-"Plug 'bling/vim-airline'
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
+"Plug 'fatih/vim-go', { 'for': 'golang', 'do': ':GoInstallBinaries' }
 Plug 'nvie/vim-flake8', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
@@ -44,6 +43,7 @@ set rtp+=/usr/local/opt/fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
 " a ruler on steroids
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 "set so=7                        " Set 7 lines to the cursors - when moving vertical..
@@ -200,13 +200,6 @@ endfun
 
 map <leader>xdw :call TrimWhitespace()<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Default FileTypes
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufRead,BufNewFile  *.build         setfiletype xml
-autocmd BufRead,BufNewFile  *.targets       setfiletype xml
-autocmd BufRead,BufNewFile  *.config        setfiletype xml
-
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -234,8 +227,11 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 nnoremap <leader>r :!%:p<CR>
-autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; python3' shellescape(@%, 1)<cr>
-
+" autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; python3' shellescape(@%, 1)<cr>
+let g:flake8_show_in_gutter=1
+"let g:python_host_prog='/usr/local/bin/python2'
+let g:loaded_python_provider = 1    " disable python2 support
+let g:python3_host_prog='/Users/kkwak/.pyenv/versions/3.7.1/bin/python'
 
 """"""""""""""""""""""""""""""
 " => Xml
@@ -288,6 +284,15 @@ map <silent> <C-E> :call ToggleVExplorer()<CR>
 """"""""""""""""""""""""""""""
 " => Plugin configuration
 """"""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_powerline_fonts = 0
+let g:airline_theme='dark'
+let g:airline_left_sep=' '
+let g:airline_left_alt_sep='|'
+let g:airline_right_sep=' '
+let g:airline_right_alt_sep='|'
+let g:airline_section_z=''
+
 let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_custom_ignore = {

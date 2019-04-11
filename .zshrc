@@ -30,24 +30,30 @@ case `uname` in
     # commands for OS X go here
     # requires autojump: brew install autojump
     [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+    if [ "$INSIDE_EMACS" ]; then
+    else
+      test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+    fi
 
     alias brewup='brew update && brew upgrade && brew cleanup'
     alias e='emacsclient -nw -c -a "" "$@"'
 
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+    export BROWSER='/Applications/Vivaldi.app/Contents/MacOS/Vivaldi'
 
     export VISUAL="nvim"
     export EDITOR="nvim"
     alias v='nvim'
     alias vim='nvim'
+    alias top='htop'
     alias ssh='TERM=xterm-256color ssh'
 
     # python https://github.com/Qix-/better-exceptions
     export BETTER_EXCEPTIONS=1
 
     export GOPATH=$HOME/projects/golang
-    export PATH=$JAVA_HOME/bin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/bin::$PATH
+    export FLUTTERPATH=$HOME/projects/flutter/bin
+    export PATH=$JAVA_HOME/bin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/bin:$FLUTTERPATH::$PATH
 
     eval "$(pyenv init -)"
 
@@ -62,8 +68,8 @@ case `uname` in
     alias preview="fzf --preview 'bat --color \"always\" {}'"
     # add support for ctrl+o to open selected file in VS Code
     export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(nvim {})+abort'"
-
-    alias top="sudo htop"
+    alias top="htop"
+    export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 
   ;;
   Linux)

@@ -1,8 +1,10 @@
 [user]
 email = kkwak@pm.com
 name = kkwak
+signingkey = F546EBA5D4557BD2
 
 [core]
+excludesfile = ~/.gitignore_global
 pager = cat
 editor = nvim
 
@@ -10,10 +12,10 @@ editor = nvim
 co = checkout
 cp = cherry-pick
 br = branch
-ci = commit	
+ci = commit
 st = status
 cg = config --global -e
-df = diff --ignore-space-at-eol -b -w 
+df = diff --ignore-space-at-eol -b -w
 spull = !git-svn fetch && git-svn rebase
 spush = !git-svn dcommit
 lg = log -25 --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cr%Creset | %C(yellow)%d%Creset %s %C(bold yellow)[%an]%Creset' --abbrev-commit --date=short
@@ -47,3 +49,5 @@ rebase = true
 autosetupmerge = true
 autosetuprebase = always
 
+[commit]
+	gpgsign = true

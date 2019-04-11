@@ -49,13 +49,13 @@ link() {
 
 # root files:
 link .gitconfig
-link .spacemacs
+link .gitignore_global
 link .tmux.conf
 link .vimrc
 link .zlogin
 link .zlogout
 link .zpreztorc
-link .zprofile 
+link .zprofile
 link .zshenv
 link .zshrc
 
@@ -68,12 +68,6 @@ mkdir -p $rootDest/.config
 link .config/tmux-resurrect
 link .config/up.sh
 link .config/update-submodules.sh
-
-mkdir -p $rootDest/.sbt/0.13/plugins
-link .sbt/0.13/plugins/plugins.sbt
-
-mkdir -p $rootDest/.lein
-link .lein/profiles.clj
 
 mkdir -p $rootDest/.config/ranger
 link .config/ranger/commands.py
