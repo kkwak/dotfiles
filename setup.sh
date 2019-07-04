@@ -64,10 +64,12 @@ link .vim
 link .zprezto
 
 # subfolder required
+mkdir -p $rootDest/.emacs.d
+link .emacs.d/init.el
+
 mkdir -p $rootDest/.config
 link .config/tmux-resurrect
 link .config/up.sh
-link .config/update-submodules.sh
 
 mkdir -p $rootDest/.config/ranger
 link .config/ranger/commands.py

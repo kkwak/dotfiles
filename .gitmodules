@@ -1,18 +1,7 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
-[submodule ".vim/bundle/surround.git"]
-	path = .vim/bundle/surround.git
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/repeat.git"]
-	path = .vim/bundle/repeat.git
-	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/ctrlp.git"]
-	path = .vim/bundle/ctrlp.git
-	url = https://github.com/kien/ctrlp.vim.git
-[submodule ".vim/bundle/vim-airline.git"]
-	path = .vim/bundle/vim-airline.git
-	url = https://github.com/bling/vim-airline.git
+
 [submodule ".config/tmux-resurrect"]
 	path = .config/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
